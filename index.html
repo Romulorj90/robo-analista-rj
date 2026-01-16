@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Notícias RJ | Dashboard Final</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="animated-bg"></div>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>⭐ Favoritos</h3>
+            <button onclick="limparTodosFavoritos()" class="btn-clear-all">🗑️</button>
+        </div>
+        <ul id="listaFavoritos"></ul>
+    </aside>
+
+    <div class="container">
+        <header class="header">
+            <h1><span class="gradient-text">ROBÔ</span> ANALISTA RJ</h1>
+            <button class="btn-update" id="btnUpdate">🔄 ATUALIZAR AGORA</button>
+            <p id="timer-info">🤖 Monitoramento Automático Ativo</p>
+        </header>
+
+        <div class="dashboard-stats">
+            <div class="dash-card"> <span id="total-noticias">0</span>
+                <p>Lidas</p>
+            </div>
+            <div class="dash-card pos"> <span id="total-pos">0</span>
+                <p>Boas</p>
+            </div>
+            <div class="dash-card neu"> <span id="total-neu">0</span>
+                <p>Normais</p>
+            </div>
+            <div class="dash-card neg"> <span id="total-neg">0</span>
+                <p>Graves</p>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <main id="feed" class="feed-column"></main>
+
+            <aside class="chart-column">
+                <div class="sticky-chart">
+                    <h3>📊 SENTIMENTOS</h3>
+                    <div style="height: 280px; width: 100%; position: relative;">
+                        <canvas id="meuGrafico"></canvas>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
