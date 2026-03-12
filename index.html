@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Notícias RJ | Dashboard Final</title>
+    <title>IA Notícias | Dashboard Pro</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap"
         rel="stylesheet">
@@ -17,16 +17,21 @@
     <aside class="sidebar">
         <div class="sidebar-header">
             <h3>⭐ Favoritos</h3>
-            <button onclick="limparTodosFavoritos()" class="btn-clear-all">🗑️</button>
+            <button onclick="limparTodosFavoritos()" class="btn-clear-all" title="Apagar todos">🗑️</button>
         </div>
         <ul id="listaFavoritos"></ul>
     </aside>
 
     <div class="container">
         <header class="header">
-            <h1><span class="gradient-text">ROBÔ</span> ANALISTA RJ</h1>
-            <button class="btn-update" id="btnUpdate">🔄 ATUALIZAR AGORA</button>
-            <p id="timer-info">🤖 Monitoramento Automático Ativo</p>
+            <h1><span class="gradient-text">ROBÔ</span> ANALISTA</h1>
+
+            <div class="tabs-container">
+                <button class="btn-tab active" data-categoria="rj">📍 Rio de Janeiro</button>
+                <button class="btn-tab" data-categoria="tech">💻 Tech & Games</button>
+            </div>
+
+            <p id="timer-info">🤖 Monitoramento Automático Ativo (5 min)</p>
         </header>
 
         <div class="dashboard-stats">
@@ -44,8 +49,31 @@
             </div>
         </div>
 
+        <div class="carousel-container" id="carouselDestaques">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="loading-message" style="padding: 20px; color: white;">Carregando destaques...</div>
+            </div>
+            <button class="carousel-btn prev" onclick="mudarSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="mudarSlide(1)">&#10095;</button>
+        </div>
+
         <div class="main-layout">
-            <main id="feed" class="feed-column"></main>
+            <div class="feed-column">
+
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="🔍 Buscar nas demais notícias...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="btn-filter active" data-filter="todos">Todos</button>
+                        <button class="btn-filter" data-filter="positivo">Boas</button>
+                        <button class="btn-filter" data-filter="neutro">Normais</button>
+                        <button class="btn-filter" data-filter="negativo">Graves</button>
+                    </div>
+                </div>
+
+                <main id="feed"></main>
+            </div>
 
             <aside class="chart-column">
                 <div class="sticky-chart">
