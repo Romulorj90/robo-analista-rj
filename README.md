@@ -1,70 +1,54 @@
-🤖 Robô Analista de Notícias RJ - IA & Monitoramento em tempo real
-Este projeto é um dashboard inteligente que realiza o web scraping das notícias do portal G1 Rio de Janeiro, processa o conteúdo através de Inteligência Artificial para análise de sentimento e exibe os resultados em uma interface moderna e automatizada.
+# 🤖 Robô Analista de Notícias - V1.1 (Dashboard Híbrido)
 
-🎯 Objetivo
-O robô foi criado para monitorar o cenário do Rio de Janeiro, classificando-se como manchetes entre Boas , Normais ou Graves , permitindo uma visão estatística do dia através de um gráfico sonoro e um sistema de curadoria de favoritos.
+Este projeto é um dashboard inteligente que realiza o **web scraping** de portais de notícias, processa o conteúdo através de **Inteligência Artificial** para análise de sentimento e exibe os resultados em uma interface moderna, assíncrona e separada por contextos (Hard News vs. Tecnologia).
 
-🛠️ Tecnologias Utilizadas
-Backend (O Cérebro)
-Python : Linguagem principal.
+![Status](https://img.shields.io/badge/Status-V1.1_Ativa-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![Flask](https://img.shields.io/badge/Framework-Flask-lightgrey)
 
-Flask : Micro-framework para criação da API que atende os dados.
+## 🚀 Novidades da Versão 1.1
+A evolução desta aplicação focou em resolver gargalos de UX (Experiência do Usuário) e precisão de dados:
+* **Separação de Contexto (Abas):** O backend agora possui rotas independentes. Notícias de segurança do RJ não se misturam com termos de "vírus" e "hackers" do mercado de Tecnologia, garantindo uma IA calibrada e gráficos precisos para cada nicho.
+* **Layout Híbrido (Hero Banner):** As 3 notícias mais urgentes ganharam destaque em um carrossel de largura total no topo da página.
+* **Motor de Busca e Filtros Instantâneos:** Implementação de filtragem via JavaScript no frontend, permitindo buscar palavras-chave ou isolar notícias (Boas/Graves) em milissegundos, sem requisições extras ao servidor.
 
-BeautifulSoup4 : Biblioteca para remoção de dados (Web Scraping).
+---
 
-TextBlob : Biblioteca de Processamento de Linguagem Natural (PNL) para análise de sentimento.
+## 🛠️ Tecnologias Utilizadas
 
-Flask-CORS : Para permitir a comunicação segura entre o Backend e o Frontend.
+### **Backend (API & Dados)**
+* **Python & Flask**: Criação da API e roteamento.
+* **BeautifulSoup4**: Extração de dados (Web Scraping) superando desafios de *Lazy Loading* (data-src e srcset).
+* **TextBlob**: Processamento de Linguagem Natural (NLP) com dicionários de peso customizados.
 
-Frontend (Uma Interface)
-HTML5 & CSS3 : Design "Neo-Glass" com fundo animado e layout responsivo em 3 colunas.
+### **Frontend (Interface)**
+* **HTML5, CSS3 & JS (ES6)**: Design "Neo-Glass", sistema de abas e carrossel interativo.
+* **Chart.js**: Renderização dinâmica do balanço de sentimentos.
+* **LocalStorage**: Persistência de dados para curadoria de notícias favoritas.
 
-JavaScript (ES6) : Lógica para consumo de API, manipulação do DOM e persistência local.
+---
 
-Chart.js : Renderização de gráficos de rosca para visualização de dados.
+## ⚙️ Como Executar o Projeto Localmente
 
-LocalStorage : Armazenamento dos favoritos diretamente no navegador do usuário.
-
-🚀 Como Executar o Projeto
-1. Pré-requisitos
-Certifique-se de ter o Python instalado. Recomenda-se o uso de um ambiente virtual:
-
-Bash
-
-# Criar ambiente virtual
+### **1. Configuração do Ambiente**
+```bash
+# Criar e ativar o ambiente virtual
 python -m venv .venv
+.\.venv\Scripts\activate  # No Windows
 
-# Ativar ambiente (Windows)
-.\.venv\Scripts\activate
-2. Instalação das Dependências
-Bash
-
+# Instalar dependências
 pip install flask beautifulsoup4 requests textblob flask-cors
-3. Iniciando o Backend
-Na pasta raiz do projeto, execute:
 
-Bash
+2. Iniciando o Backend (API)
+Na pasta raiz do projeto, execute o servidor Flask:
 
 python app.py
-O servidor iniciará emhttp://127.0.0.1:5000 .
 
-4. Iniciando o Frontend
-Basta abrir o arquivo index.htmlno seu navegador. Dica: Utilize a extensão Live Server do VS Code para uma melhor experiência.
+⚠️ Importante: O servidor rodará na porta 5000. Não acesse a raiz diretamente (retornará 404). As rotas ativas da API são:
 
-🧠 Desafios Superados durante o Desenvolvimento
-Extração de Imagens Dinâmicas : Superamos o desafio do Lazy Load do G1, implementando uma lógica que captura atributos de imagem específicos ( data-srce srcset) para evitar que as miniaturas não carreguem ou pisquem.
+Dados do Rio de Janeiro: http://127.0.0.1:5000/noticias/rj
+Dados de Tecnologia: http://127.0.0.1:5000/noticias/tech
 
-Refinamento da IA : Criamos um filtro de palavras-chave customizado para garantir que notícias de segurança pública fossem rigorosamente definidas como "Negativas/Graves", corrigindo falsos-positivos da análise gramatical padrão.
+3. Iniciando o Frontend (Dashboard)
+Com o terminal do Python rodando em segundo plano, abra o arquivo index.html em seu navegador (recomendado uso da extensão Live Server do VS Code para a porta 5500).
 
-Auto-atualização : Implementamos uma lógica de Polling em JavaScript que atualiza o feed e os gráficos a cada 5 minutos de forma assíncrona, sem recarregar a página.
-
-📸 Funcionalidades em Destaque
-Dashboard de Estatísticas : Contador em tempo real de cada categoria de notícia.
-
-Sistema de Favoritos : Salve notícias importantes com um clique e remova-as quando desejar.
-
-Gráfico Interativo : Visualização imediata do balanço de sentimentos das últimas 15 notícias.
-
-Visual Futurista : Interface escura com transparências e animações suaves.
-
-Desenvolvido por Rômulo Cavalcante Amorim Estudo focado em Engenharia de Dados e Desenvolvimento Full Stack.
